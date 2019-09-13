@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ealine.cn/"/>
-  <updated>2019-09-11T19:49:37.286Z</updated>
+  <updated>2019-09-13T09:59:39.853Z</updated>
   <id>http://blog.ealine.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中正则表达是的使用</title>
+    <link href="http://blog.ealine.cn/2019/09/13/python-re/"/>
+    <id>http://blog.ealine.cn/2019/09/13/python-re/</id>
+    <published>2019-09-13T09:47:58.000Z</published>
+    <updated>2019-09-13T09:59:39.853Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h3><p>^/$ 开始/结束<br>\w/\W 匹配字母,数字,下划线/相反<br>\s/\S 匹配空白字符/相反<br>\d/D 匹配数字/相反<br>\b/\B 匹配单词开始和结束的位置/相反<br>. 匹配任意字符<br>[m] 匹配单个字符串<br>[m1…n] 匹配多个字符串<br>[m-n] 匹配 m-n 区间的数字,字母<br>[^m] 匹配除 m 以外的字符串<br>() 对正则表达式进行分组</p><h3 id="正则表达式中的常用限定符"><a href="#正则表达式中的常用限定符" class="headerlink" title="正则表达式中的常用限定符"></a>正则表达式中的常用限定符</h3><a id="more"></a><p>*匹配0次或多次 </p><p>+匹配一次或多次 </p><p>?匹配一次或零次</p><p>{m}重复m次 </p><p>{m,n}重复m到n次,省略n则为m到任意次</p><h3 id="限定符与-的组合"><a href="#限定符与-的组合" class="headerlink" title="限定符与?的组合"></a>限定符与?的组合</h3><p>*?匹配零次或多次,且最短匹配 </p><p>+?匹配一次或多次,且最短匹配</p><p>??匹配一次或零次,且最短匹配 </p><p>{m,n}?重复m-m次,且最短匹配</p><p>(?#…)正则表达式的注释   </p><p>(?P<name>…)给分组命名,name为名称</name></p><p>(?P=name)使用名为name的分组</p><h3 id="re模块的常用函数"><a href="#re模块的常用函数" class="headerlink" title="re模块的常用函数"></a>re模块的常用函数</h3><p>findall(pattern,string,flags=0)#根据pattern在string中匹配字符串,若匹配成功返回结果列表,否则返回空列表,flags表示规则选项(可选).</p><p>sub(pattern,repl,string,count=0)#根据指定的正则表达式,替换源字符串中的子串,repl是用于替换的字符串,string是源字符串.</p><p>match(pattern,string,flags=0)#从头部开始匹配字符串,只返回1次匹配成功的对象,否则返回None.</p><p>compile(patter,flags=0)#编译正则表达式,返回1个pattern对象</p><p>split(pattern,string,maxsplit=0)#根据pattern分隔string,maxsplit表示最大的分隔数.</p><p>escape(pattern) #匹配字符串中的特殊字符,如*,+,?等.</p><h3 id="re模块的规则选项"><a href="#re模块的规则选项" class="headerlink" title="re模块的规则选项"></a>re模块的规则选项</h3><p>I忽略大小写</p><p> L字符集本地化,用以多语言环境</p><p>M多行匹配 </p><p>S使用’.’匹配包括\n在内的所有字符</p><p>X忽略正则表达式的空白,换行  U\w\W\b\B\d\D\s\S都将使用Unicode</p><h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式:"></a>常用正则表达式:</h3><p>E-mail地址：^[\w-]+(.[\w-]+)<em>@[\w-]+(.[\w-]+)+$<br>URL：^[a-zA-Z]+://(\w+(-\w+)</em>)(.(\w+(-\w+)<em>))</em>(?\s<em>)?$<br> 或：^http://[A-Za-z0-9]+.[A-Za-z0-9]+[/=?%-&amp;_~`@[]&#39;:+!]</em>([^&lt;&gt;&quot;&quot;])<em>$<br>邮政编码：^[1-9]\d{5}$<br>中文：^[\u0391-\uFFE5]+$<br>电话号码：^((\d2,3<br>)|(\d{3}-))?(0\d2,3|0\d{2,3}-)?[1-9]\d{6,7}(-\d{1,4})?$<br>手机号码：^((\d2,3)|(\d{3}-))?13\d{9}$<br>匹配空行：\n[\s| ]*\r<br>提取信息中的网络链接：(h|H)(r|R)(e|E)(f|F)  *=  *(‘|”)?(\w|\|/|.)+(‘|”|  *|&gt;)?<br>提取信息中的邮件地址：\w+([-+.]\w+)</em>@\w+([-.]\w+)<em>.\w+([-.]\w+)</em><br>提取信息中的图片链接：(s|S)(r|R)(c|C)  <em>=  *(‘|”)?(\w|\|/|.)+(‘|”|  *|&gt;)?<br>提取信息中的IP地址：(\d+).(\d+).(\d+).(\d+)<br>IP: re.search(r’^(([01]?\d?\d?|2[0-4]?\d?|25[0-5]?).){3}([01]?\d?\d?|2[0-4]?\d?|25[0-5]?)$’,’1.14.183.1’)<br>提取信息中的中国手机号码：(86)</em>0*13\d{9}<br>提取信息中的中国固定电话号码：(\d3,4|\d{3,4}-|\s)?\d{8}<br>提取信息中的中国电话号码（包括移动和固定电话）：(\d3,4</p><p>|\d{3,4}-|\s)?\d{7,14}<br>中文、英文、数字及下划线：^[\u4e00-\u9fa5_a-zA-Z0-9]+$<br>匹配中文字符的正则表达式： [\u4e00-\u9fa5] </p><p>匹配双字节字符(包括汉字在内)：[^\x00-\xff]</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;正则表达式特殊字符&quot;&gt;&lt;a href=&quot;#正则表达式特殊字符&quot; class=&quot;headerlink&quot; title=&quot;正则表达式特殊字符&quot;&gt;&lt;/a&gt;正则表达式特殊字符&lt;/h3&gt;&lt;p&gt;^/$ 开始/结束&lt;br&gt;\w/\W 匹配字母,数字,下划线/相反&lt;br&gt;\s/\S 匹配空白字符/相反&lt;br&gt;\d/D 匹配数字/相反&lt;br&gt;\b/\B 匹配单词开始和结束的位置/相反&lt;br&gt;. 匹配任意字符&lt;br&gt;[m] 匹配单个字符串&lt;br&gt;[m1…n] 匹配多个字符串&lt;br&gt;[m-n] 匹配 m-n 区间的数字,字母&lt;br&gt;[^m] 匹配除 m 以外的字符串&lt;br&gt;() 对正则表达式进行分组&lt;/p&gt;&lt;h3 id=&quot;正则表达式中的常用限定符&quot;&gt;&lt;a href=&quot;#正则表达式中的常用限定符&quot; class=&quot;headerlink&quot; title=&quot;正则表达式中的常用限定符&quot;&gt;&lt;/a&gt;正则表达式中的常用限定符&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="开发相关" scheme="http://blog.ealine.cn/categories/%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="Python" scheme="http://blog.ealine.cn/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
