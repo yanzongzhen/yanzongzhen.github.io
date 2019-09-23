@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Javen Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Python 的数据结构 List Tuple Dict Set两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)12a = &quot;life is short use Python&quot;print(dir(a))[&amp;apos;__add__&amp;apos;, &amp;apos;__class__&amp;apos;, &amp;apos;__contains__&amp;apos;, &amp;apos;__d">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础学习 之 数据结构">
+<meta property="og:url" content="http://blog.ealine.cn/2019/09/23/python-base-struct/index.html">
+<meta property="og:site_name" content="Javen Blog">
+<meta property="og:description" content="Python 的数据结构 List Tuple Dict Set两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)12a = &quot;life is short use Python&quot;print(dir(a))[&amp;apos;__add__&amp;apos;, &amp;apos;__class__&amp;apos;, &amp;apos;__contains__&amp;apos;, &amp;apos;__d">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-23T11:44:06.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础学习 之 数据结构">
+<meta name="twitter:description" content="Python 的数据结构 List Tuple Dict Set两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)12a = &quot;life is short use Python&quot;print(dir(a))[&amp;apos;__add__&amp;apos;, &amp;apos;__class__&amp;apos;, &amp;apos;__contains__&amp;apos;, &amp;apos;__d">
+  <link rel="canonical" href="http://blog.ealine.cn/2019/09/23/python-base-struct/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Python基础学习 之 数据结构 | Javen Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javen Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">让我们一起学习记录并美好时刻</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://blog.ealine.cn/2019/09/23/python-base-struct/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Javen Yan">
+      <meta itemprop="description" content="Life is short Use Python">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javen Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Python基础学习 之 数据结构
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-23 19:43:33 / 修改时间：19:44:06" itemprop="dateCreated datePublished" datetime="2019-09-23T19:43:33+08:00">2019-09-23</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发相关/" itemprop="url" rel="index"><span itemprop="name">开发相关</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/09/23/python-base-struct/#SOHUCS" itemprop="discussionUrl"><span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/09/23/python-base-struct/" itemprop="commentCount"></span></a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Python-的数据结构-List-Tuple-Dict-Set"><a href="#Python-的数据结构-List-Tuple-Dict-Set" class="headerlink" title="Python 的数据结构 List Tuple Dict Set"></a>Python 的数据结构 List Tuple Dict Set</h2><h4 id="两个辅助函数让你学习更轻松-help-查看方法的使用方式-dir-查看类的子方法"><a href="#两个辅助函数让你学习更轻松-help-查看方法的使用方式-dir-查看类的子方法" class="headerlink" title="两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)"></a>两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"life is short use Python"</span></span><br><span class="line">print(dir(a))</span><br></pre></td></tr></table></figure><pre><code>[&apos;__add__&apos;, &apos;__class__&apos;, &apos;__contains__&apos;, &apos;__delattr__&apos;, &apos;__dir__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__getitem__&apos;, &apos;__getnewargs__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__init__&apos;, &apos;__init_subclass__&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lt__&apos;, &apos;__mod__&apos;, &apos;__mul__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__rmod__&apos;, &apos;__rmul__&apos;, &apos;__setattr__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;capitalize&apos;, &apos;casefold&apos;, &apos;center&apos;, &apos;count&apos;, &apos;encode&apos;, &apos;endswith&apos;, &apos;expandtabs&apos;, &apos;find&apos;, &apos;format&apos;, &apos;format_map&apos;, &apos;index&apos;, &apos;isalnum&apos;, &apos;isalpha&apos;, &apos;isascii&apos;, &apos;isdecimal&apos;, &apos;isdigit&apos;, &apos;isidentifier&apos;, &apos;islower&apos;, &apos;isnumeric&apos;, &apos;isprintable&apos;, &apos;isspace&apos;, &apos;istitle&apos;, &apos;isupper&apos;, &apos;join&apos;, &apos;ljust&apos;, &apos;lower&apos;, &apos;lstrip&apos;, &apos;maketrans&apos;, &apos;partition&apos;, &apos;replace&apos;, &apos;rfind&apos;, &apos;rindex&apos;, &apos;rjust&apos;, &apos;rpartition&apos;, &apos;rsplit&apos;, &apos;rstrip&apos;, &apos;split&apos;, &apos;splitlines&apos;, &apos;startswith&apos;, &apos;strip&apos;, &apos;swapcase&apos;, &apos;title&apos;, &apos;translate&apos;, &apos;upper&apos;, &apos;zfill&apos;]</code></pre><a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help(a.strip)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Help on built-in function strip:
+
+strip(chars=None, /) method of builtins.str instance
+    Return a copy of the string with leading and trailing whitespace remove.
+
+    If chars is given and not None, remove characters in chars instead.</code></pre><h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>list 是一种有序的集合，可以随时添加和删除其中的元素<br>list 是一个可变的有序表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">heros = [<span class="string">'iron man'</span>, <span class="string">'spider man'</span>, <span class="string">'egg man'</span>]</span><br><span class="line">print(<span class="string">f'<span class="subst">&#123;heros&#125;</span> \n type: <span class="subst">&#123;type(heros)&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;spider man&apos;, &apos;egg man&apos;]
+ type: &lt;class &apos;list&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(heros)  <span class="comment">#  获取列表的长度</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>3</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros[<span class="number">0</span>]  <span class="comment"># 角标从0开始 默认是长度-1</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;iron man&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;spider man&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros[<span class="number">3</span>]  <span class="comment"># 超出索引</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>---------------------------------------------------------------------------
+
+IndexError                                Traceback (most recent call last)
+
+&lt;ipython-input-75-8dc1ea78ff1c&gt; in &lt;module&gt;
+----&gt; 1 heros[3]  # 超出索引
+
+
+IndexError: list index out of range</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros[<span class="number">-1</span>] <span class="comment"># 从后往前取值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;egg man&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros.insert(<span class="number">3</span>, <span class="string">'wo man'</span>)  <span class="comment"># 指定索引插入</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;spider man&apos;, &apos;egg man&apos;, &apos;wo man&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros[<span class="number">3</span>] = <span class="string">'woo man'</span>  <span class="comment"># 更新元素</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;spider man&apos;, &apos;egg man&apos;, &apos;woo man&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros.pop()  <span class="comment">#  弹出最后一个元素并返回</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;woo man&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;spider man&apos;, &apos;egg man&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros.pop(<span class="number">1</span>)  <span class="comment"># 指定索弹出元素</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;spider man&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;egg man&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros.append(<span class="string">'add man'</span>)  <span class="comment"># 追加元素到列表</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heros</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;iron man&apos;, &apos;egg man&apos;, &apos;add man&apos;]</code></pre><h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><p>tuple 和 list 非常类似，但是 tuple 一旦初始化就不能修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = ()</span><br><span class="line">print(<span class="string">f"<span class="subst">&#123;t&#125;</span> \n <span class="subst">&#123;type(t)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>()
+ &lt;class &apos;tuple&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="number">2</span>) <span class="comment"># (2)一个元素时 不能这样定义</span></span><br><span class="line">print(<span class="string">f"<span class="subst">&#123;t&#125;</span> \n <span class="subst">&#123;type(t)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2
+ &lt;class &apos;int&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tt = (<span class="number">2</span>,)  <span class="comment"># 只有1个元素的tuple时，也会加一个逗号,</span></span><br><span class="line">print(<span class="string">f"<span class="subst">&#123;tt&#125;</span> \n <span class="subst">&#123;type(tt)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(2,)
+ &lt;class &apos;tuple&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dir(tt))  <span class="comment"># 元组的属性</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;__add__&apos;, &apos;__class__&apos;, &apos;__contains__&apos;, &apos;__delattr__&apos;, &apos;__dir__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__getitem__&apos;, &apos;__getnewargs__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__init__&apos;, &apos;__init_subclass__&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lt__&apos;, &apos;__mul__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__rmul__&apos;, &apos;__setattr__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;count&apos;, &apos;index&apos;]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo = (<span class="number">1</span>,<span class="number">2</span>,[<span class="number">2</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo  <span class="comment"># 此时tuple内元素变了 那可以说 tuple为可变序列吗?</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(1, 2, [100, 8])</code></pre><h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kw = &#123;<span class="string">"name"</span>: <span class="string">"test"</span>, <span class="string">"age"</span>: <span class="number">12</span>&#125;</span><br><span class="line">print(<span class="string">f"<span class="subst">&#123;kw&#125;</span> \n <span class="subst">&#123;type(kw)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;name&apos;: &apos;test&apos;, &apos;age&apos;: 12}
+ &lt;class &apos;dict&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kw[<span class="string">'name'</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>&apos;test&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kw[<span class="string">'name1'</span>]  <span class="comment"># key找不到空报错</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>---------------------------------------------------------------------------
+
+KeyError                                  Traceback (most recent call last)
+
+&lt;ipython-input-96-69178caa756c&gt; in &lt;module&gt;
+----&gt; 1 kw[&apos;name1&apos;]  # key找不到空报错
+
+
+KeyError: &apos;name1&apos;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kw.get(<span class="string">'name1'</span>, <span class="literal">None</span>)    <span class="comment"># key找不到, 返回None</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kw[<span class="string">'sex'</span>] = <span class="string">'man'</span>  <span class="comment"># 增加字段</span></span><br><span class="line">kw</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;name&apos;: &apos;test&apos;, &apos;age&apos;: 12, &apos;sex&apos;: &apos;man&apos;}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kw.pop(<span class="string">'age'</span>)  <span class="comment"># 删除字段</span></span><br><span class="line">kw</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;name&apos;: &apos;test&apos;, &apos;sex&apos;: &apos;man&apos;}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dir(kw))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&apos;__class__&apos;, &apos;__contains__&apos;, &apos;__delattr__&apos;, &apos;__delitem__&apos;, &apos;__dir__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__getitem__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__init__&apos;, &apos;__init_subclass__&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lt__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__setattr__&apos;, &apos;__setitem__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;clear&apos;, &apos;copy&apos;, &apos;fromkeys&apos;, &apos;get&apos;, &apos;items&apos;, &apos;keys&apos;, &apos;pop&apos;, &apos;popitem&apos;, &apos;setdefault&apos;, &apos;update&apos;, &apos;values&apos;]</code></pre><p>set 和 dict 类似，也是一组 key 的集合，但不存储 value。由于 key 不能重复，所以，在 set 中，没有重复的 key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = set([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<pre><code>{1, 2, 3, 4}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.add(<span class="number">4</span>)  <span class="comment"># 增加 元素中有的 不添加</span></span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<pre><code>{1, 2, 3, 4}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.add(<span class="number">33</span>)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<pre><code>{1, 2, 3, 4, 33}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.remove(<span class="number">2</span>) <span class="comment"># 删除key</span></span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<pre><code>{1, 3, 4, 33}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ss = set([<span class="number">3</span>,<span class="number">4</span>])  <span class="comment"># 数学交集</span></span><br><span class="line">s&amp;ss</span><br></pre></td></tr></table></figure>
+
+<pre><code>{3, 4}</code></pre>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/23/python-base-value/" rel="next" title="Python 基础学习 之 数据类型">
+                  <i class="fa fa-chevron-left"></i> Python 基础学习 之 数据类型
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-的数据结构-List-Tuple-Dict-Set"><span class="nav-number">1.</span> <span class="nav-text">Python 的数据结构 List Tuple Dict Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两个辅助函数让你学习更轻松-help-查看方法的使用方式-dir-查看类的子方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">两个辅助函数让你学习更轻松 help (查看方法的使用方式) dir(查看类的子方法)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.0.2.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元组"><span class="nav-number">1.0.3.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">1.0.4.</span> <span class="nav-text">字典</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpeg"
+      alt="Javen Yan">
+  <p class="site-author-name" itemprop="name">Javen Yan</p>
+  <div class="site-description" itemprop="description">Life is short Use Python</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yanzngzhen" title="GitHub &rarr; https://github.com/yanzngzhen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yanzongzhen127@outlook.com" title="E-Mail &rarr; mailto:yanzongzhen127@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/yanzongzhen" title="Weibo &rarr; https://weibo.com/yanzongzhen" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.zhihu.com/people/geek-ealine" title="ZhiHu &rarr; https://www.zhihu.com/people/geek-ealine" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>ZhiHu</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Javen Yan's Blog</span>
+</div>
+
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  总共 <span id="busuanzi_value_site_pv"></span> 查看 | 您是第<span id="busuanzi_value_site_uv"></span>个小伙伴 | <span id="busuanzi_value_page_pv"></span> Hits
+</div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  <script>
+  (function() {
+    var appid = 'cyuqJMfcj';
+    var conf = 'ee8b3273aa8ab0234681eebf2711ad76';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  })();
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+</body>
+</html>
