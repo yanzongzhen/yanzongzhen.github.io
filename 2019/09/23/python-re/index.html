@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="关于">
+  <meta name="description" content="正则表达式\d 匹配一个数字\s 匹配任意空白字符，等价于 [\t\n\r\f]\S 匹配任何非空白字符。等价于 [^\f\n\r\t\v]\w 匹配一个字母或数字. 匹配任意字符 任意个字符（包括0个）  至少一个字符 1+? 0-1 个字符 [0, 1]{n} n 个字符{n,m} n-m 个字符[0-9a-zA-Z_] 可以匹配一个数字、字母或者下划线[0-9a-zA-Z_]+ 可以匹配至少">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://blog.ealine.cn/2019/09/12/hello-world/index.html">
+<meta property="og:title" content="Python 基础学习 之 正则表达式">
+<meta property="og:url" content="http://blog.ealine.cn/2019/09/23/python-re/index.html">
 <meta property="og:site_name" content="Javen Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="正则表达式\d 匹配一个数字\s 匹配任意空白字符，等价于 [\t\n\r\f]\S 匹配任何非空白字符。等价于 [^\f\n\r\t\v]\w 匹配一个字母或数字. 匹配任意字符 任意个字符（包括0个）  至少一个字符 1+? 0-1 个字符 [0, 1]{n} n 个字符{n,m} n-m 个字符[0-9a-zA-Z_] 可以匹配一个数字、字母或者下划线[0-9a-zA-Z_]+ 可以匹配至少">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-11T19:49:37.286Z">
+<meta property="og:updated_time" content="2019-09-23T11:47:39.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-  <link rel="canonical" href="http://blog.ealine.cn/2019/09/12/hello-world/">
+<meta name="twitter:title" content="Python 基础学习 之 正则表达式">
+<meta name="twitter:description" content="正则表达式\d 匹配一个数字\s 匹配任意空白字符，等价于 [\t\n\r\f]\S 匹配任何非空白字符。等价于 [^\f\n\r\t\v]\w 匹配一个字母或数字. 匹配任意字符 任意个字符（包括0个）  至少一个字符 1+? 0-1 个字符 [0, 1]{n} n 个字符{n,m} n-m 个字符[0-9a-zA-Z_] 可以匹配一个数字、字母或者下划线[0-9a-zA-Z_]+ 可以匹配至少">
+  <link rel="canonical" href="http://blog.ealine.cn/2019/09/23/python-re/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>Hello World | Javen Blog</title>
+  <title>Python 基础学习 之 正则表达式 | Javen Blog</title>
   
 
 
@@ -249,7 +249,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://blog.ealine.cn/2019/09/12/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://blog.ealine.cn/2019/09/23/python-re/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Javen Yan">
@@ -261,7 +261,7 @@
       <meta itemprop="name" content="Javen Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Hello World
+        <h1 class="post-title" itemprop="name headline">Python 基础学习 之 正则表达式
 
           
         </h1>
@@ -277,7 +277,7 @@
                 
               
 
-              <time title="创建时间：2019-09-12 03:23:12 / 修改时间：03:49:37" itemprop="dateCreated datePublished" datetime="2019-09-12T03:23:12+08:00">2019-09-12</time>
+              <time title="创建时间：2019-09-23 17:47:58 / 修改时间：19:47:39" itemprop="dateCreated datePublished" datetime="2019-09-23T17:47:58+08:00">2019-09-23</time>
             </span>
           
             
@@ -290,7 +290,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客/" itemprop="url" rel="index"><span itemprop="name">博客</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发相关/" itemprop="url" rel="index"><span itemprop="name">开发相关</span></a></span>
 
                 
                 
@@ -310,7 +310,7 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/2019/09/12/hello-world/#SOHUCS" itemprop="discussionUrl"><span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/09/12/hello-world/" itemprop="commentCount"></span></a>
+      <a title="changyan" href="/2019/09/23/python-re/#SOHUCS" itemprop="discussionUrl"><span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/09/23/python-re/" itemprop="commentCount"></span></a>
     
   </span>
   
@@ -325,19 +325,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>\d 匹配一个数字<br>\s 匹配任意空白字符，等价于 [\t\n\r\f]<br>\S 匹配任何非空白字符。等价于 [^\f\n\r\t\v]<br>\w 匹配一个字母或数字<br>. 匹配任意字符</p><ul>
+<li>任意个字符（包括0个）</li>
+</ul><ul>
+<li>至少一个字符 1+<br>? 0-1 个字符 [0, 1]<br>{n} n 个字符<br>{n,m} n-m 个字符<br>[0-9a-zA-Z_] 可以匹配一个数字、字母或者下划线<br>[0-9a-zA-Z_]+ 可以匹配至少由一个数字、字母或者下划线组成的字符串<br>[a-zA-Z_][0-9a-za-z_]_ 可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串<br>| A|B 匹配 A 或 B<br>^ 开头<br>$ 结尾<br>() 对正则表达式进行分组<br>限定符与?的组合<br>_? 匹配零次或多次,且最短匹配<br>+? 匹配一次或多次,且最短匹配<br>?? 匹配一次或零次,且最短匹配<br>{m,n}? 重复 m-m 次,且最短匹配<br>(?#…) 正则表达式的注释<br>(?P…) 给分组命名,name 为名称<br>(?P=name) 使用名为 name 的分组<br>re 模块<br>re 模块的规则选项<br>I 忽略大小写<br>L 字符集本地化,用以多语言环境<br>M 多行匹配<br>S 使用’.’匹配包括\n 在内的所有字符<br>X 略正则表达式的空白,换行 U\w\W\b\B\d\D\s\S 都将使用 Unicode</li>
+</ul><a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">inspur_phone = <span class="string">"0531-85106170"</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(<span class="string">r"^\d&#123;3,4&#125;-\d&#123;3,8&#125;$"</span>)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, inspur_phone)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;re.Match object; span=(0, 13), match=&apos;0531-85106170&apos;&gt;</code></pre><p>匹配身份证</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">idno = <span class="string">"370481199211154232"</span></span><br><span class="line">ress = re.search(<span class="string">r'^(?P&lt;province&gt;\d&#123;3&#125;)(?P&lt;city&gt;\d&#123;3&#125;)(?P&lt;born_year&gt;\d&#123;4&#125;)(?P&lt;born_month&gt;\d&#123;2&#125;)(?P&lt;born_day&gt;\d&#123;2&#125;)(?P&lt;random_no&gt;\w&#123;4&#125;)$'</span>, idno, re.S)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ress</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;re.Match object; span=(0, 18), match=&apos;370481199211154232&apos;&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ress.groupdict()</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;province&apos;: &apos;370&apos;,
+ &apos;city&apos;: &apos;481&apos;,
+ &apos;born_year&apos;: &apos;1992&apos;,
+ &apos;born_month&apos;: &apos;11&apos;,
+ &apos;born_day&apos;: &apos;15&apos;,
+ &apos;random_no&apos;: &apos;4232&apos;}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -353,7 +367,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/关于/" rel="tag"><i class="fa fa-tag"></i> 关于</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
             
           </div>
         
@@ -363,14 +377,18 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/09/12/hello-world/" rel="next" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/23/python-re/" rel="prev" title="Python 基础学习 之 正则表达式">
-                  Python 基础学习 之 正则表达式 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/09/23/python-base-value/" rel="prev" title="Python 基础学习 之 数据类型">
+                  Python 基础学习 之 数据类型 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -427,7 +445,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
